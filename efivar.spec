@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        0.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/vathpela/efivar
@@ -64,6 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.10-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Fri May 02 2014 Peter Jones <pjones@redhat.com> - 0.10-1
 - Update package to 0.10.
 - Fixes a build error due to different cflags in the builders vs updstream
