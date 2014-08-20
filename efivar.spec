@@ -1,6 +1,6 @@
 Name:           efivar
-Version:        0.10
-Release:        3%{?dist}
+Version:        0.11
+Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/vathpela/efivar
@@ -8,7 +8,7 @@ Requires:       %{name}-libs = %{version}-%{release}
 ExclusiveArch:	i386 x86_64 aarch64
 
 BuildRequires:  popt-devel git
-Source0:        https://github.com/vathpela/%{name}/archive/efivar-%{version}.tar.xz
+Source0:        https://github.com/vathpela/%{name}/archive/efivar-%{version}.tar.bz2
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -29,7 +29,7 @@ development headers required to use libefivar.
 %prep
 %setup -q -n %{name}-%{version}
 git init
-git config user.email "shim-owner@fedoraproject.org"
+git config user.email "efivar-owner@fedoraproject.org"
 git config user.name "Fedora Ninjas"
 git add .
 git commit -a -q -m "%{version} baseline."
@@ -64,6 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Wed Aug 20 2014 Peter Jones <pjones@redhat.com> - 0.11-1
+- Update to 0.11
+
 * Sat Aug 16 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.10-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
