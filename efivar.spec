@@ -1,13 +1,13 @@
 Name:           efivar
-Version:        0.11
+Version:        0.13
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/vathpela/efivar
 Requires:       %{name}-libs = %{version}-%{release}
-ExclusiveArch:	%{ix86} x86_64 aarch64
+ExclusiveArch:  %{ix86} x86_64 aarch64
 BuildRequires:  popt-devel git
-Source0:        https://github.com/vathpela/%{name}/archive/efivar-%{version}.tar.bz2
+Source0:        https://github.com/vathpela/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -28,7 +28,7 @@ development headers required to use libefivar.
 %prep
 %setup -q -n %{name}-%{version}
 git init
-git config user.email "efivar-owner@fedoraproject.org"
+git config user.email "%{name}-owner@fedoraproject.org"
 git config user.name "Fedora Ninjas"
 git add .
 git commit -a -q -m "%{version} baseline."
@@ -49,7 +49,9 @@ rm -rf $RPM_BUILD_ROOT
 %postun libs -p /sbin/ldconfig
 
 %files
-%doc COPYING README
+%{!?_licensedir:%global license %%doc}
+%license COPYING
+%doc README
 %{_bindir}/efivar
 %{_mandir}/man1/*
 
@@ -63,6 +65,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Tue Oct 07 2014 Peter Jones <pjones@redhat.com> - 0.13-1
+- Update to 0.13:
+- add efi_symbol_to_guid()
+- efi_name_to_guid() will now fall back on efi_symbol_to_guid() as a last
+  resort
+- "efivar -L" to list all the guids we know about
+- better namespacing on libefivar.so (rename well_known_* -> efi_well_known_*)
+
+* Thu Sep 25 2014 Peter Jones <pjones@redhat.com> - 0.12-1
+- Update to 0.12
+
 * Wed Aug 20 2014 Peter Jones <pjones@redhat.com> - 0.11-1
 - Update to 0.11
 
