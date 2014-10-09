@@ -1,5 +1,5 @@
 Name:           efivar
-Version:        0.13
+Version:        0.14
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
@@ -65,6 +65,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Wed Oct 08 2014 Peter Jones <pjones@redhat.com> - 0.14-1
+- Update to 0.14
+- add efi_id_guid_to_guid() and efi_guid_to_id_guid(), which support {ID GUID}
+  as a concept.
+- Add some vendor specific guids to our guid list.
+- Call "empty" "zero" now, as many other places do.  References to
+  efi_guid_is_empty() and efi_guid_empty still exist for ABI compatibility.
+- add "efivar -L" to the man page.
+
 * Tue Oct 07 2014 Peter Jones <pjones@redhat.com> - 0.13-1
 - Update to 0.13:
 - add efi_symbol_to_guid()
