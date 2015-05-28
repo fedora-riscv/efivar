@@ -1,13 +1,14 @@
 Name:           efivar
-Version:        0.14
+Version:        0.19
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
-URL:            https://github.com/vathpela/efivar
+URL:            https://github.com/rhinstaller/efivar
 Requires:       %{name}-libs = %{version}-%{release}
-ExclusiveArch:  %{ix86} x86_64 aarch64
+ExclusiveArch:	%{ix86} x86_64 aarch64
+
 BuildRequires:  popt-devel git
-Source0:        https://github.com/vathpela/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
+Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -33,6 +34,8 @@ git config user.name "Fedora Ninjas"
 git add .
 git commit -a -q -m "%{version} baseline."
 git am %{patches} </dev/null
+git config --unset user.email
+git config --unset user.name
 
 %build
 make libdir=%{_libdir} bindir=%{_bindir} OPT_FLAGS="$RPM_OPT_FLAGS"
@@ -65,6 +68,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Thu May 28 2015 Peter Jones <pjones@redhat.com> - 0.19-1
+- Update to 0.19
+- add API from efibootmgr so fwupdate and other tools can use it.
+
+* Wed Oct 15 2014 Peter Jones <pjones@redhat.com> - 0.15-1
+- Update to 0.15
+- Make 32-bit builds set variables' DataSize correctly.
+
 * Wed Oct 08 2014 Peter Jones <pjones@redhat.com> - 0.14-1
 - Update to 0.14
 - add efi_id_guid_to_guid() and efi_guid_to_id_guid(), which support {ID GUID}
@@ -87,12 +98,6 @@ rm -rf $RPM_BUILD_ROOT
 
 * Wed Aug 20 2014 Peter Jones <pjones@redhat.com> - 0.11-1
 - Update to 0.11
-
-* Sat Aug 16 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.10-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
-
-* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.10-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
 * Fri May 02 2014 Peter Jones <pjones@redhat.com> - 0.10-1
 - Update package to 0.10.
