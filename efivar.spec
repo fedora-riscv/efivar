@@ -1,14 +1,15 @@
 Name:           efivar
 Version:        0.19
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
 Requires:       %{name}-libs = %{version}-%{release}
-ExclusiveArch:	%{ix86} x86_64 aarch64
+ExclusiveArch:  %{ix86} x86_64 aarch64
 
 BuildRequires:  popt-devel git
 Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
+Patch0001: 0001-Work-around-LocateDevicePath-not-grokking-PcieRoot-d.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -68,6 +69,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Jun 01 2015 Peter Jones <pjones@redhat.com> - 0.19-2
+- Work around device path creation on machines where PcieRoot() paths simply
+  don't work.
+
 * Thu May 28 2015 Peter Jones <pjones@redhat.com> - 0.19-1
 - Update to 0.19
 - add API from efibootmgr so fwupdate and other tools can use it.
