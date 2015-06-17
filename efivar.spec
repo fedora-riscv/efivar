@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        0.20
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
@@ -68,6 +68,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Tue Jun 02 2015 Peter Jones <pjones@redhat.com> - 0.20-1
 - Update to 0.20
 - Make sure tester is build with the right link order for libraries.
