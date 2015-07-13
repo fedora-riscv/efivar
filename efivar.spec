@@ -74,6 +74,10 @@ rm -rf $RPM_BUILD_ROOT
 - Error check sizes in vars_get_variable()
 - Fix some file size comparisons
 - make SONAME reflect the correct values.
+- Fix some uses of "const"
+- Compile with -O2 by default
+- Fix some strict-aliasing violations
+- Fix some of the .pc files and how we do linking to work better.
 
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
