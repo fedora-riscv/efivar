@@ -1,6 +1,6 @@
 Name:           efivar
-Version:        0.20
-Release:        2%{?dist}
+Version:        0.21
+Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
@@ -54,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %{!?_licensedir:%global license %%doc}
 %license COPYING
-%doc README
+%doc README.md
 %{_bindir}/efivar
 %{_mandir}/man1/*
 
@@ -68,6 +68,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Jul 13 2015 Peter Jones <pjones@redhat.com> - 0.21-1
+- Rename "make test" so packagers don't think it's a good idea to run it
+  during builds.
+- Error check sizes in vars_get_variable()
+- Fix some file size comparisons
+- make SONAME reflect the correct values.
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
