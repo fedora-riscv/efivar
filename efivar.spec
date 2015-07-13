@@ -1,5 +1,5 @@
 Name:           efivar
-Version:        0.20
+Version:        0.21
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
@@ -54,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %{!?_licensedir:%global license %%doc}
 %license COPYING
-%doc README
+%doc README.md
 %{_bindir}/efivar
 %{_mandir}/man1/*
 
@@ -68,6 +68,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Jul 13 2015 Peter Jones <pjones@redhat.com> - 0.21-1
+- Rename "make test" so packagers don't think it's a good idea to run it
+  during builds.
+- Error check sizes in vars_get_variable()
+- Fix some file size comparisons
+- make SONAME reflect the correct values.
+
 * Tue Jun 02 2015 Peter Jones <pjones@redhat.com> - 0.20-1
 - Update to 0.20
 - Make sure tester is build with the right link order for libraries.
