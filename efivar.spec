@@ -74,6 +74,10 @@ rm -rf $RPM_BUILD_ROOT
 - Error check sizes in vars_get_variable()
 - Fix some file size comparisons
 - make SONAME reflect the correct values.
+- Fix some uses of "const"
+- Compile with -O2 by default
+- Fix some strict-aliasing violations
+- Fix some of the .pc files and how we do linking to work better.
 
 * Tue Jun 02 2015 Peter Jones <pjones@redhat.com> - 0.20-1
 - Update to 0.20
