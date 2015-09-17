@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        0.21
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
@@ -68,6 +68,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Thu Sep 17 2015 Peter Jones <pjones@redhat.com> - 0.21-2
+- Rebuild this to resolve some koji/bodhi oddities.
+
 * Mon Jul 13 2015 Peter Jones <pjones@redhat.com> - 0.21-1
 - Rename "make test" so packagers don't think it's a good idea to run it
   during builds.
