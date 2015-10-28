@@ -9,6 +9,7 @@ ExclusiveArch:	%{ix86} x86_64 aarch64
 
 BuildRequires:  popt-devel git
 Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
+Patch0001: 0001-Sometimes-the-compiler-doesn-t-like-0-as-an-initiali.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
