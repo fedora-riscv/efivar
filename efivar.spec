@@ -1,13 +1,13 @@
 Name:           efivar
-Version:        0.21
-Release:        3%{?dist}
+Version:        0.23
+Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
 Requires:       %{name}-libs = %{version}-%{release}
 ExclusiveArch:	%{ix86} x86_64 aarch64
 
-BuildRequires:  popt-devel git
+BuildRequires:  popt-devel popt-static git
 Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
 
 %description
@@ -56,6 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 %license COPYING
 %doc README.md
 %{_bindir}/efivar
+%exclude %{_bindir}/efivar-static
 %{_mandir}/man1/*
 
 %files devel
@@ -68,6 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Feb 15 2016 Peter Jones <pjones@redhat.com> - 0.23-1
+- Update to 0.23
+
 * Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.21-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
