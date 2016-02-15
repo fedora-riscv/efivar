@@ -7,7 +7,7 @@ URL:            https://github.com/rhinstaller/efivar
 Requires:       %{name}-libs = %{version}-%{release}
 ExclusiveArch:	%{ix86} x86_64 aarch64
 
-BuildRequires:  popt-devel popt-static git
+BuildRequires:  popt-devel popt-static git glibc-static
 Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
 Patch0001:	0001-Workaround-rename-of-linux-nvme.h.patch
 
