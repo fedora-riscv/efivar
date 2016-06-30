@@ -1,3 +1,5 @@
 *.tar.*
 clog
 *.rpm
+efivar-*/
+bodhi.template

@@ -1,5 +1,5 @@
 Name:           efivar
-Version:        0.23
+Version:        0.24
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
@@ -9,7 +9,6 @@ ExclusiveArch:	%{ix86} x86_64 aarch64
 
 BuildRequires:  popt-devel popt-static git glibc-static
 Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
-Patch0001:	0001-Workaround-rename-of-linux-nvme.h.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -39,7 +38,7 @@ git config --unset user.email
 git config --unset user.name
 
 %build
-make libdir=%{_libdir} bindir=%{_bindir} OPT_FLAGS="$RPM_OPT_FLAGS"
+make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -70,6 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Thu Jun 30 2016 Peter Jones <pjones@redhat.com> - 0.24-1
+- Update to 0.24
+
 * Mon Feb 15 2016 Peter Jones <pjones@redhat.com> - 0.23-1
 - Update to 0.23
 
