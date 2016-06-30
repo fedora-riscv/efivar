@@ -9,6 +9,7 @@ ExclusiveArch:	%{ix86} x86_64 aarch64
 
 BuildRequires:  popt-devel popt-static git glibc-static
 Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
+Patch0001:	0001-allow-deprecated-declarations-for-now-to-let-readdir.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
