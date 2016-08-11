@@ -1,0 +1,40 @@
+From ebbff29622bd7c80415ab52749982918e66fa2be Mon Sep 17 00:00:00 2001
+From: Peter Jones <pjones@redhat.com>
+Date: Thu, 11 Aug 2016 15:46:06 -0400
+Subject: [PATCH] util.h: add int_add for 32-bit platforms
+
+---
+ src/util.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/util.h b/src/util.h
+index 80f5fab..de972af 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -38,12 +38,23 @@
+  */
+ #if defined(__GNUC__) && defined(__GNUC_MINOR__)
+ #if __GNUC__ >= 5 && __GNUC_MINOR__ >= 1
++#define int_add(a, b, c) __builtin_add_overflow(a, b, c)
+ #define long_add(a, b, c) __builtin_add_overflow(a, b, c)
+ #define long_mult(a, b, c) __builtin_mul_overflow(a, b, c)
+ #define ulong_add(a, b, c) __builtin_add_overflow(a, b, c)
+ #define ulong_mult(a, b, c) __builtin_mul_overflow(a, b, c)
+ #endif
+ #endif
++#ifndef int_add
++#define int_add(a, b, c) ({					\
++		const int _limit = INT_MAX;			\
++		int _ret;					\
++		_ret = _limit - (a) > (b);			\
++		if (!_ret)					\
++			*(c) = ((a) + (b));			\
++		_ret;						\
++	})
++#endif
+ #ifndef long_add
+ #define long_add(a, b, c) ({					\
+ 		const long _limit = LONG_MAX;			\
+-- 
+2.7.4
+
