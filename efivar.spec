@@ -1,5 +1,5 @@
 Name:           efivar
-Version:        27
+Version:        28
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
@@ -69,7 +69,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
-* Tue Aug 16 2016 Peter Jones <pjones@redhat.com> - 27-0.1
+* Wed Aug 17 2016 Peter Jones <pjones@redhat.com> - 28-1
+- Make our sonames always lib$FOO.1 , not lib$FOO.$VERSION .
+
+* Tue Aug 16 2016 Peter Jones <pjones@redhat.com> - 27-1
 - Bug fix for 086eeb17 in efivar 26.
 
 * Wed Aug 10 2016 Peter Jones <pjones@redhat.com> - 26-1
