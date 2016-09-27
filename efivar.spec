@@ -1,5 +1,5 @@
 Name:           efivar
-Version:        29
+Version:        30
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
@@ -69,6 +69,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Tue Sep 27 2016 Peter Jones <pjones@redhat.com> - 30-1
+- Fix efidp_*() functions with __pure__ that break with some optimizations
+- Fix NVMe EUI parsing.
+
 * Tue Sep 27 2016 Peter Jones <pjones@redhat.com> - 29-1
 - Use -pie not -PIE in our linker config
 - Fix some overflow checks for gcc < 5.x
