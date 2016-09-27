@@ -1,5 +1,5 @@
 Name:           efivar
-Version:        28
+Version:        29
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
@@ -38,7 +38,7 @@ git config --unset user.email
 git config --unset user.name
 
 %build
-make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
+make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="$RPM_LD_FLAGS -flto"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -69,6 +69,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Tue Sep 27 2016 Peter Jones <pjones@redhat.com> - 29-1
+- Use -pie not -PIE in our linker config
+- Fix some overflow checks for gcc < 5.x
+- Make variable class probes other than the first one actually work
+- Move -flto to CFLAGS
+- Pack all of the efi device path headers
+- Fix redundant decl of efi_guid_zero()
+
 * Wed Aug 17 2016 Peter Jones <pjones@redhat.com> - 28-1
 - Make our sonames always lib$FOO.1 , not lib$FOO.$VERSION .
 
