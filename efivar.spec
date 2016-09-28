@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        30
-Release:        3{?dist}
+Release:        3%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
