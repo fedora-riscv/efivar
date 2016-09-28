@@ -1,7 +1,7 @@
-From 106068931a9ace55140371ade9588c60991061a0 Mon Sep 17 00:00:00 2001
+From 7ae5c70750d31d7ddce736b5979d15a1a0ccaae2 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Wed, 28 Sep 2016 09:28:24 -0400
-Subject: [PATCH] lib*: provide LIBEFIVAR_0.28 etc.
+Subject: [PATCH] lib*: provide LIBEFIVAR_1.28 etc.
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---
@@ -10,7 +10,7 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  2 files changed, 16 insertions(+), 4 deletions(-)
 
 diff --git a/src/libefiboot.map.in b/src/libefiboot.map.in
-index 51822a5..9de1232 100644
+index 51822a5..dce38a3 100644
 --- a/src/libefiboot.map.in
 +++ b/src/libefiboot.map.in
 @@ -23,7 +23,13 @@ LIBEFIBOOT_0.0 {
@@ -20,17 +20,17 @@ index 51822a5..9de1232 100644
 -};
 +} LIBEFIBOOT_0.0;
 +
-+LIBEFIBOOT_0.28 {
++LIBEFIBOOT_1.28 {
 +} LIBEFIBOOT_0.24;
 +
-+LIBEFIBOOT_0.29 {
-+} LIBEFIBOOT_0.28;
++LIBEFIBOOT_1.29 {
++} LIBEFIBOOT_1.28;
  
  LIBEFIBOOT_1.@@VERSION@@ {
 -};
-+} LIBEFIBOOT_0.29;
++} LIBEFIBOOT_1.29;
 diff --git a/src/libefivar.map.in b/src/libefivar.map.in
-index 6b8f996..b2743ef 100644
+index 6b8f996..033eb8d 100644
 --- a/src/libefivar.map.in
 +++ b/src/libefivar.map.in
 @@ -99,8 +99,14 @@ LIBEFIVAR_0.24 {
@@ -38,18 +38,18 @@ index 6b8f996..b2743ef 100644
  } LIBEFIVAR_0.0;
  
 -LIBEFIVAR_1.@@VERSION@@ {
-+LIBEFIVAR_0.28 {
++LIBEFIVAR_1.28 {
  	global: efi_error_set;
  		efi_error_get;
  		efi_error_clear;
 -};
 +} LIBEFIVAR_0.24;
 +
-+LIBEFIVAR_0.29 {
-+} LIBEFIVAR_0.28;
++LIBEFIVAR_1.29 {
++} LIBEFIVAR_1.28;
 +
 +LIBEFIVAR_1.@@VERSION@@ {
-+} LIBEFIVAR_0.29;
++} LIBEFIVAR_1.29;
 -- 
 2.7.4
 
