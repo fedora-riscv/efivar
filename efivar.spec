@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        30
-Release:        2%{?dist}
+Release:        3{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
@@ -9,7 +9,7 @@ ExclusiveArch:	%{ix86} x86_64 aarch64
 
 BuildRequires:  popt-devel popt-static git glibc-static
 Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
-Patch0001:	0001-lib-provide-LIBEFIVAR_0.28-etc.patch
+Patch0001:	0001-lib-provide-LIBEFIVAR_1.28-etc.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -70,6 +70,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Wed Sep 28 2016 Peter Jones <pjones@redhat.com> - 30-3
+- Maybe even provide the *right* old linker deps.
+
 * Tue Sep 27 2016 Peter Jones <pjones@redhat.com> - 30-2
 - Try not to screw up SONAME stuff quite so badly.
 
