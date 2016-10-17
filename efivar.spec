@@ -71,7 +71,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
-=======
 * Mon Oct 17 2016 Peter Jones <pjones@redhat.com> - 30-4
 - Handle NVMe device attributes paths moving around in sysfs.
 
