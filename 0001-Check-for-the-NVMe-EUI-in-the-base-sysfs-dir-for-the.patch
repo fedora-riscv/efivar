@@ -1,4 +1,4 @@
-From f9570dee464a879e908e6212518eca08ae138c8c Mon Sep 17 00:00:00 2001
+From c950dfce4a04b66e5efde770d82540e5d737f458 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 17 Oct 2016 10:04:48 -0400
 Subject: [PATCH] Check for the NVMe EUI in the base sysfs dir for the device
@@ -14,14 +14,14 @@ This resolves https://github.com/rhinstaller/efibootmgr/issues/48
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---
- src/linux.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ src/linux.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/src/linux.c b/src/linux.c
-index 30b5cd0..dd59551 100644
+index 30b5cd0..b995887 100644
 --- a/src/linux.c
 +++ b/src/linux.c
-@@ -363,9 +363,14 @@ sysfs_parse_nvme(uint8_t *buf, ssize_t size, ssize_t *off,
+@@ -363,8 +363,13 @@ sysfs_parse_nvme(uint8_t *buf, ssize_t size, ssize_t *off,
  	 * now fish the eui out of sysfs is there is one...
  	 */
  	rc = read_sysfs_file(&filebuf,
@@ -31,12 +31,10 @@ index 30b5cd0..dd59551 100644
 +		rc = read_sysfs_file(&filebuf,
  			     "/sys/class/block/nvme%dn%d/device/eui",
  			     ctrl_id, ns_id);
--	if (rc >= 0) {
 +	}
-+	if (rc >= 0)
+ 	if (rc >= 0) {
  		uint8_t eui[8];
  		if (rc < 23) {
- 			errno = EINVAL;
 -- 
 2.10.0
 
