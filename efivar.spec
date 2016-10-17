@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        30
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
@@ -10,6 +10,7 @@ ExclusiveArch:	%{ix86} x86_64 aarch64
 BuildRequires:  popt-devel popt-static git glibc-static
 Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
 Patch0001:	0001-lib-provide-LIBEFIVAR_1.28-etc.patch
+Patch0002:	0001-Check-for-the-NVMe-EUI-in-the-base-sysfs-dir-for-the.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -70,6 +71,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Oct 17 2016 Peter Jones <pjones@redhat.com> - 30-4
+- Handle NVMe device attributes paths moving around in sysfs.
+
 * Wed Sep 28 2016 Peter Jones <pjones@redhat.com> - 30-3
 - Maybe even provide the *right* old linker deps.
 
