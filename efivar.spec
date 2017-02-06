@@ -1,6 +1,6 @@
 Name:           efivar
-Version:        30
-Release:        5%{?dist}
+Version:        31
+Release:        0.1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
@@ -9,8 +9,6 @@ ExclusiveArch:	%{ix86} x86_64 aarch64
 
 BuildRequires:  popt-devel popt-static git glibc-static
 Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
-Patch0001:	0001-lib-provide-LIBEFIVAR_1.28-etc.patch
-Patch0002:	0001-Check-for-the-NVMe-EUI-in-the-base-sysfs-dir-for-the.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -71,6 +69,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Feb 06 2017 Peter Jones <pjones@redhat.com> - 31-0.1
+- Update to efivar 31
+- Work around NVMe EUI sysfs change
+- Provide some oldish version strings we should have kept.
+- lots of overflow checking on our pointer math in dp parsing
+- fix major/minor device number handling in the linux code
+- Do better formatting checks for MBR partitions
+- Fixes for gcc 7
+
 * Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 30-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
