@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        30
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
@@ -71,6 +71,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 30-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Mon Oct 17 2016 Peter Jones <pjones@redhat.com> - 30-4
 - Handle NVMe device attributes paths moving around in sysfs.
 
