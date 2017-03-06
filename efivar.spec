@@ -1,13 +1,13 @@
 Name:           efivar
 Version:        31
-Release:        0.1%{?dist}
+Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
 Requires:       %{name}-libs = %{version}-%{release}
 ExclusiveArch:	%{ix86} x86_64 aarch64
 
-BuildRequires:  popt-devel popt-static git glibc-static
+BuildRequires:  popt-devel popt-static git glibc-static libabigail
 Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
 
 %description
@@ -69,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
-* Mon Feb 06 2017 Peter Jones <pjones@redhat.com> - 31-0.1
+* Mon Mar 06 2017 Peter Jones <pjones@redhat.com> - 31-1
 - Update to efivar 31
 - Work around NVMe EUI sysfs change
 - Provide some oldish version strings we should have kept.
