@@ -3,7 +3,7 @@ Version:        32
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
-URL:            https://github.com/rhinstaller/efivar
+URL:            https://github.com/rhboot/efivar
 Requires:       %{name}-libs = %{version}-%{release}
 ExclusiveArch:  %{ix86} x86_64 aarch64
 
@@ -48,7 +48,9 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %check
+%ifarch x86_64
 make abicheck
+%endif
 
 %post libs -p /sbin/ldconfig
 
