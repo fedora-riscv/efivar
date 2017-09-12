@@ -1,14 +1,14 @@
 Name:           efivar
-Version:        31
-Release:        3%{?dist}
+Version:        32
+Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhinstaller/efivar
 Requires:       %{name}-libs = %{version}-%{release}
-ExclusiveArch:	%{ix86} x86_64 aarch64
+ExclusiveArch:  %{ix86} x86_64 aarch64
 
-BuildRequires:  popt-devel popt-static git glibc-static libabigail
-Source0:        https://github.com/rhinstaller/efivar/releases/download/efivar-%{version}/efivar-%{version}.tar.bz2
+BuildRequires:  popt-devel git glibc-static libabigail
+Source0:        https://github.com/rhboot/efivar/archive/%{version}.tar.gz
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -47,6 +47,9 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%check
+make abicheck
+
 %post libs -p /sbin/ldconfig
 
 %postun libs -p /sbin/ldconfig
@@ -69,6 +72,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.so.*
 
 %changelog
+* Tue Sep 12 2017 Peter Jones <pjones@redhat.com> - 32-1
+- efivar 32
+- lots of coverity fixes; mostly leaked memory and fds and the like
+- fix sysfs pci path formats
+- handle device paths for dns, nfit, bluetooth, wifi, emmc, btle.
+- improved abi checking on releases
+- Fix failures on EDIT_WRITE in edit_variable() when the variable doesn't exist
+- Add efi_guid_ux_capsule_guid to our guids
+- Now with %%check
+
 * Wed Aug 02 2017 Fedora Release Engineering <releng@fedoraproject.org> - 31-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
