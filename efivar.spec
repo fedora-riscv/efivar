@@ -1,6 +1,6 @@
 Name:           efivar
-Version:        32
-Release:        2%{?dist}
+Version:        33
+Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/efivar
@@ -8,8 +8,7 @@ Requires:       %{name}-libs = %{version}-%{release}
 ExclusiveArch:  %{ix86} x86_64 aarch64
 
 BuildRequires:  popt-devel git glibc-static libabigail
-Source0:        https://github.com/rhboot/efivar/archive/%{version}.tar.gz
-Patch0001:      0001-Make-efi_guid_ux_capsule-actually-work.patch
+Source0:        https://github.com/rhboot/efivar/archive/%{version}.tar.bz2
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -75,6 +74,10 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Tue Jan 23 2018 Peter Jones <pjones@redhat.com> - 33-1
+- Add NVDIMM support
+- Bump version to 33
+
 * Tue Sep 12 2017 Peter Jones <pjones@redhat.com> - 32-2
 - Make efi_guid_ux_capsule actually get exported right.
 
