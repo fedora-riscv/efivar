@@ -1,11 +1,11 @@
 Name:           efivar
 Version:        33
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/efivar
 Requires:       %{name}-libs = %{version}-%{release}
-ExclusiveArch:  %{ix86} x86_64 aarch64
+ExclusiveArch:  %{ix86} x86_64 aarch64 %{arm}
 
 BuildRequires:  popt-devel git glibc-static libabigail
 Source0:        https://github.com/rhboot/efivar/archive/%{version}.tar.bz2
@@ -41,11 +41,7 @@ git config --unset user.name
 make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="$RPM_LD_FLAGS -flto"
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %makeinstall
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %check
 %ifarch x86_64
@@ -74,6 +70,9 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Tue Jan 30 2018 Peter Robinson <pbrobinson@fedoraproject.org> 33-2
+- Enable ARMv7, minor spec cleanups
+
 * Tue Jan 23 2018 Peter Jones <pjones@redhat.com> - 33-1
 - Add NVDIMM support
 - Bump version to 33
