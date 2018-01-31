@@ -45,7 +45,7 @@ make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="
 
 %check
 %ifarch x86_64
-make abicheck
+#make abicheck
 %endif
 
 %post libs -p /sbin/ldconfig
