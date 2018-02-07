@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        33
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/efivar
@@ -70,6 +70,9 @@ make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="
 %{_libdir}/*.so.*
 
 %changelog
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 33-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Tue Jan 30 2018 Peter Robinson <pbrobinson@fedoraproject.org> 33-2
 - Enable ARMv7, minor spec cleanups
 
