@@ -1,6 +1,6 @@
 Name:           efivar
-Version:        33
-Release:        3%{?dist}
+Version:        34
+Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/efivar
@@ -8,7 +8,10 @@ Requires:       %{name}-libs = %{version}-%{release}
 ExclusiveArch:  %{ix86} x86_64 aarch64 %{arm}
 
 BuildRequires:  popt-devel git glibc-static libabigail
-Source0:        https://github.com/rhboot/efivar/archive/%{version}.tar.bz2
+# please don't fix this to reflect github's incomprehensible url that goes
+# to a different tarball.
+Source0:        https://github.com/rhboot/efivar/archive/efivar-%{version}.tar.bz2
+Patch0001:	0001-efivarfs-vars-usleep-before-reading-from-efivarfs-if.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -70,6 +73,9 @@ make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="
 %{_libdir}/*.so.*
 
 %changelog
+* Tue Feb 27 2018 Peter Jones <pjones@redhat.com> - 34-1
+- Update to efivar 34, and include a patch to avoid upstream rate limiting.
+
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 33-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
