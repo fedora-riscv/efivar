@@ -1,5 +1,5 @@
 Name:           efivar
-Version:        34
+Version:        35
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
@@ -11,7 +11,6 @@ BuildRequires:  popt-devel git glibc-static libabigail
 # please don't fix this to reflect github's incomprehensible url that goes
 # to a different tarball.
 Source0:        https://github.com/rhboot/efivar/archive/efivar-%{version}.tar.bz2
-Patch0001:	0001-efivarfs-vars-usleep-before-reading-from-efivarfs-if.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -73,6 +72,15 @@ make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Apr 09 2018 Peter Jones <pjones@redhat.com> - 35-1
+- Update to efivar 35
+- fixes for older compilers
+- efi_get_variable_exists()
+- Lots of stuff to make CI work.
+- use usleep() to avoid hitting the kernel rate limiter on efivarfs
+- better EFI_GUID macro
+- add efi_guid_fwupdate (0abba7dc-e516-4167-bbf5-4d9d1c739416)
+
 * Tue Feb 27 2018 Peter Jones <pjones@redhat.com> - 34-1
 - Update to efivar 34, and include a patch to avoid upstream rate limiting.
 
