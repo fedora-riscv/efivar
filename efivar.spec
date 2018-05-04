@@ -1,13 +1,13 @@
 Name:           efivar
 Version:        35
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/efivar
 Requires:       %{name}-libs = %{version}-%{release}
 ExclusiveArch:  %{efi}
 
-BuildRequires:  efi-rpm-macros git glibc-static libabigail
+BuildRequires:  efi-srpm-macros git glibc-static libabigail
 # please don't fix this to reflect github's incomprehensible url that goes
 # to a different tarball.
 Source0:        https://github.com/rhboot/efivar/archive/efivar-%{version}.tar.bz2
@@ -72,6 +72,9 @@ make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="
 %{_libdir}/*.so.*
 
 %changelog
+* Fri May 04 2018 Peter Jones <pjones@redhat.com> - 35-3
+- Rebuild for new efi-rpm-macros, now that it has settled down a bit.
+
 * Tue May 01 2018 Peter Jones <pjones@redhat.com> - 35-2
 - Use efi-rpm-macros instead of defining efi-related macros ourselves
 
