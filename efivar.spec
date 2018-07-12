@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        35
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/efivar
@@ -72,6 +72,9 @@ make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="
 %{_libdir}/*.so.*
 
 %changelog
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 35-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Fri May 04 2018 Peter Jones <pjones@redhat.com> - 35-3
 - Rebuild for new efi-rpm-macros, now that it has settled down a bit.
 
