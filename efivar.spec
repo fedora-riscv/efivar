@@ -7,6 +7,7 @@ URL:            https://github.com/rhboot/efivar
 Requires:       %{name}-libs = %{version}-%{release}
 ExclusiveArch:  %{efi}
 
+BuildRequires:  gcc
 BuildRequires:  efi-srpm-macros git glibc-static libabigail
 # please don't fix this to reflect github's incomprehensible url that goes
 # to a different tarball.
