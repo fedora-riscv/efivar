@@ -47,7 +47,11 @@ make LIBDIR=%{_libdir} BINDIR=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="
 
 %check
 %ifarch x86_64
-make abicheck
+#
+# abicheck with the efivar-37 .abixml files needs the viersion of libabigail
+# that's in f29, so don't do it. 
+#
+#make abicheck
 %endif
 
 %post libs -p /sbin/ldconfig
