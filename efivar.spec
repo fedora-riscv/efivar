@@ -1,5 +1,5 @@
 Name:           efivar
-Version:        36
+Version:        37
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
@@ -11,42 +11,7 @@ BuildRequires:  gcc
 BuildRequires:  efi-srpm-macros git glibc-static libabigail
 # please don't fix this to reflect github's incomprehensible url that goes
 # to a different tarball.
-Source0:        https://github.com/rhboot/efivar/archive/efivar-%{version}.tar.bz2
-
-Patch0001: 0001-Move-the-syntastic-file-I-use-out-of-the-repo.patch
-Patch0002: 0002-Move-verbosity-headers-to-be-public.patch
-Patch0003: 0003-Pacify-some-coverity-nits.patch
-Patch0004: 0004-efivar-Fix-some-types-in-L-behavior-to-pacify-coveri.patch
-Patch0005: 0005-Promote-_make_hd_dn-to-make_hd_dn-and-get-rid-of-the.patch
-Patch0006: 0006-Try-to-convince-covscan-that-sysfs_read_file-doesn-t.patch
-Patch0007: 0007-Make-efidp_make_file-have-even-more-better-input-con.patch
-Patch0008: 0008-Make-path-helpers.c-also-import-fix_coverity.h.patch
-Patch0009: 0009-Fix-a-makeguids-building-problem-with-generics.h.patch
-Patch0010: 0010-Improve-ACPI-device-path-formatting.patch
-Patch0011: 0011-Give-linux-s-parse-functions-the-unmodified-device-l.patch
-Patch0012: 0012-Move-ACPI-ID-parsing-to-a-shared-location.patch
-Patch0013: 0013-Make-a-platform-ACPI-root-parser-separate-from-PCI-r.patch
-Patch0014: 0014-Make-a-way-to-say-e-3-isn-t-viable-for-a-kind-of-dev.patch
-Patch0015: 0015-Make-a-linux-device-root-for-SOC-devices-that-use-FD.patch
-Patch0016: 0016-If-we-can-t-parse-part-of-the-device-link-skip-it-an.patch
-Patch0017: 0017-Pacify-clang-analyzer-just-a-little.patch
-Patch0018: 0018-Try-even-harder-to-convince-coverity-that-get_file-i.patch
-Patch0019: 0019-Make-the-debug-code-less-intrusive.patch
-Patch0020: 0020-efiboot-Make-the-device-node-skipping-code-pass-cove.patch
-Patch0021: 0021-efiboot-don-t-error-on-unknown-type-with-DEV_ABBREV_.patch
-Patch0022: 0022-efiboot-fix-a-bad-error-check.patch
-Patch0023: 0023-efiboot-parse_scsi_link-fix-the-offset-searching-for.patch
-Patch0024: 0024-Coverity-still-doesn-t-believe-in-error-codes.patch
-Patch0025: 0025-Don-t-require-NVME-to-have-an-EUI.patch
-Patch0026: 0026-makeguids-initialize-memory.patch
-Patch0027: 0027-emmc_parser-add-emmc_parser.patch
-Patch0028: 0028-abignore-work-around-an-abidw-bug.patch
-Patch0029: 0029-Update-abidw-for-newer-tools.patch
-Patch0030: 0030-linux-emmc-update-for-internal-API-breakage.patch
-Patch0031: 0031-Fix-another-buggy-fake-acpi-pci-root-driver.patch
-Patch0032: 0032-Fix-dev-probes-intialization-test.patch
-Patch0033: 0033-Deal-with-devices-that-don-t-have-a-device-link-in-s.patch
-Patch0034: 0034-Handle-partition-name-parsing-and-formatting-for-par.patch
+Source0:        https://github.com/rhboot/efivar/releases/download/%{version}/efivar-%{version}.tar.bz2
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -76,7 +41,7 @@ git config --unset user.email
 git config --unset user.name
 
 %build
-make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="$RPM_LD_FLAGS -flto"
+make LIBDIR=%{_libdir} BINDIR=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="$RPM_LD_FLAGS -flto"
 
 %install
 %makeinstall
@@ -108,6 +73,22 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Wed Dec 05 2018 Peter Jones <pjones@redhat.com> - 37-1
+- Update to efivar 37:
+  - Minor coverity fixes
+  - Improve ACPI device path formatting
+  - Add support for SOC devices that use FDT as their PCI root node
+  - Make devices we can't parse the "device" sysfs link for use DEV_ABBREV_ONLY
+  - Handle SCSI port numbers better
+  - Don't require an EUI for NVMe
+  - Fix the accidental requirement on ACPI UID nodes existing
+  - Add support for EMMC devices
+  - Add support for PCI root nodes without a device link in sysfs
+  - Add support for partitioned MD devices
+  - Fix partition number detection when the number isn't provided
+  - Add support for ACPI Generic Container and Embedded Controller root nodes
+  - Add limited support for SAS/SATA port expanders
+
 * Mon Sep 17 2018 Peter Jones <pjones@redhat.com> - 36-1
 - Update to efivar 36
 - Add NVDIMM support
