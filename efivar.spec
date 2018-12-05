@@ -1,5 +1,5 @@
 Name:           efivar
-Version:        35
+Version:        37
 Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
@@ -10,7 +10,7 @@ ExclusiveArch:  %{ix86} x86_64 aarch64 %{arm}
 BuildRequires:  popt-devel git glibc-static libabigail
 # please don't fix this to reflect github's incomprehensible url that goes
 # to a different tarball.
-Source0:        https://github.com/rhboot/efivar/archive/efivar-%{version}.tar.bz2
+Source0:        https://github.com/rhboot/efivar/releases/download/%{version}/efivar-%{version}.tar.bz2
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -40,14 +40,14 @@ git config --unset user.email
 git config --unset user.name
 
 %build
-make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="$RPM_LD_FLAGS -flto"
+make LIBDIR=%{_libdir} BINDIR=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="$RPM_LD_FLAGS -flto"
 
 %install
 %makeinstall
 
 %check
 %ifarch x86_64
-#make abicheck
+make abicheck
 %endif
 
 %post libs -p /sbin/ldconfig
@@ -72,6 +72,33 @@ make libdir=%{_libdir} bindir=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="
 %{_libdir}/*.so.*
 
 %changelog
+* Wed Dec 05 2018 Peter Jones <pjones@redhat.com> - 37-1
+- Update to efivar 37:
+  - Minor coverity fixes
+  - Improve ACPI device path formatting
+  - Add support for SOC devices that use FDT as their PCI root node
+  - Make devices we can't parse the "device" sysfs link for use DEV_ABBREV_ONLY
+  - Handle SCSI port numbers better
+  - Don't require an EUI for NVMe
+  - Fix the accidental requirement on ACPI UID nodes existing
+  - Add support for EMMC devices
+  - Add support for PCI root nodes without a device link in sysfs
+  - Add support for partitioned MD devices
+  - Fix partition number detection when the number isn't provided
+  - Add support for ACPI Generic Container and Embedded Controller root nodes
+  - Add limited support for SAS/SATA port expanders
+- And also from efivar 36:
+  - Add NVDIMM support
+  - Re-written linux interface parser to handle how devices are
+    partitioned better, and for cleaner code, with one file per device
+    type.
+  - lots of verbosity updates
+  - better CI
+  - analysis with clang's analyzer as well as coverity
+  - Better handling of immutable bits in sysfs
+  - LIBEFIVAR_OPS=help
+  - lots of code cleanups.
+
 * Mon Apr 09 2018 Peter Jones <pjones@redhat.com> - 35-1
 - Update to efivar 35
 - fixes for older compilers
