@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/efivar
@@ -12,6 +12,17 @@ BuildRequires:  efi-srpm-macros git glibc-static libabigail
 # please don't fix this to reflect github's incomprehensible url that goes
 # to a different tarball.
 Source0:        https://github.com/rhboot/efivar/releases/download/%{version}/efivar-%{version}.tar.bz2
+
+Patch0001: 0001-util.h-add-unlikely-and-likely-macros.patch
+Patch0002: 0002-dp.h-make-format_guid-handle-misaligned-guid-pointer.patch
+Patch0003: 0003-linux-pci-root-remove-an-unused-assignment.patch
+Patch0004: 0004-Fix-all-the-places-Werror-address-of-packed-member-c.patch
+Patch0005: 0005-Get-rid-of-the-arrows-in-our-debug-messages.patch
+Patch0006: 0006-Define-strdupa-if-it-is-not-defined.patch
+Patch0007: 0007-Android-inital-porting-of-libefivar.patch
+Patch0008: 0008-Remove-an-unused-function.patch
+Patch0009: 0009-Fix-another-error-of-Werror-address-of-packed-member.patch
+Patch0010: 0010-Update-generated-ABI.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -71,6 +82,10 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Tue Nov 12 2019 Peter Jones <pjones@redhat.com> - 37-4
+- Update for some compiler warning fixes.
+  Resolves: rhbz#1735168
+
 * Wed Jul 24 2019 Fedora Release Engineering <releng@fedoraproject.org> - 37-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
