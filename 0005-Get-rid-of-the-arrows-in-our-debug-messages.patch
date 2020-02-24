@@ -1,7 +1,7 @@
 From e39fb5b9e590c6616459c15b5d95fbc09fb077d6 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Thu, 21 Feb 2019 15:26:23 -0500
-Subject: [PATCH 05/10] Get rid of the arrows in our debug messages.
+Subject: [PATCH 05/86] Get rid of the arrows in our debug messages.
 
 They're not *that* useful, and the code is clever and problematic.
 
@@ -368,5 +368,5 @@ index ba8fee35ae9..6d3c10e946e 100644
  
  #endif /* EFIVAR_UTIL_H */
 -- 
-2.23.0
+2.24.1
 

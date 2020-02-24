@@ -1,7 +1,7 @@
 From cb0b1c30103abc17dbbed14210bbc59a73802206 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 7 Jan 2019 10:30:23 -0500
-Subject: [PATCH 01/10] util.h: add unlikely() and likely() macros
+Subject: [PATCH 01/86] util.h: add unlikely() and likely() macros
 
 Signed-off-by: Peter Jones <pjones@redhat.com>
 ---
@@ -29,5 +29,5 @@ index f63a8907611..ba8fee35ae9 100644
   * I'm not actually sure when these appear, but they're present in the
   * version in front of me.
 -- 
-2.23.0
+2.24.1
 
