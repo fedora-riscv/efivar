@@ -1,7 +1,7 @@
 From 8f803791a1c97a4d1bce049264218a94c46d7838 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Mon, 7 Jan 2019 11:32:41 -0500
-Subject: [PATCH 03/10] linux-pci-root: remove an unused assignment
+Subject: [PATCH 03/86] linux-pci-root: remove an unused assignment
 
 scan-build gripes about this, and it's pointless, so it can go.
 
@@ -23,5 +23,5 @@ index a2d9fb04a11..5d1df06119d 100644
  
          debug("returning %zd", sz);
 -- 
-2.23.0
+2.24.1
 
