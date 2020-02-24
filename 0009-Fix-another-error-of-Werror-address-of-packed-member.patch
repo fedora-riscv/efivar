@@ -1,7 +1,7 @@
 From 0dad6d78a7fb5f6c5fb4a1d646040539db6cf865 Mon Sep 17 00:00:00 2001
 From: Chih-Wei Huang <cwhuang@linux.org.tw>
 Date: Tue, 26 Feb 2019 18:42:20 +0800
-Subject: [PATCH 09/10] Fix another error of -Werror=address-of-packed-member
+Subject: [PATCH 09/86] Fix another error of -Werror=address-of-packed-member
 
 Android 9 clang complains:
 
@@ -50,5 +50,5 @@ index 9f964663de8..6b8e9072594 100644
  			       ",%"PRIu64",%"PRIu64")",
  			       dp->infiniband.target_port_id,
 -- 
-2.23.0
+2.24.1
 

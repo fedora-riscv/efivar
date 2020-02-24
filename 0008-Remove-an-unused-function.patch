@@ -1,7 +1,7 @@
 From 22da79a45a0c3a1437255c813b0b86a7b7925ae3 Mon Sep 17 00:00:00 2001
 From: Chih-Wei Huang <cwhuang@linux.org.tw>
 Date: Tue, 26 Feb 2019 14:57:00 +0800
-Subject: [PATCH 08/10] Remove an unused function
+Subject: [PATCH 08/86] Remove an unused function
 
 This gets rid of an error from Android 9 clang:
 
@@ -36,5 +36,5 @@ index 6d405af8a76..4bb453be834 100644
  device_free(struct device *dev)
  {
 -- 
-2.23.0
+2.24.1
 

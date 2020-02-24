@@ -1,7 +1,7 @@
 From c3c553db85ff10890209d0fe48fb4856ad68e4e0 Mon Sep 17 00:00:00 2001
 From: Peter Jones <pjones@redhat.com>
 Date: Thu, 21 Feb 2019 15:20:12 -0500
-Subject: [PATCH 04/10] Fix all the places -Werror=address-of-packed-member
+Subject: [PATCH 04/86] Fix all the places -Werror=address-of-packed-member
  catches.
 
 This gets rid of all the places GCC 9's -Werror=address-of-packed-member
@@ -168,5 +168,5 @@ index dbb59004b7c..edd8367b4bc 100644
  };
  
 -- 
-2.23.0
+2.24.1
 

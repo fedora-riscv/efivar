@@ -1,7 +1,7 @@
 From 1a0ea5da82d8be7d05338bb42e8e71cdba7866f4 Mon Sep 17 00:00:00 2001
 From: Chih-Wei Huang <cwhuang@linux.org.tw>
 Date: Thu, 10 Jan 2019 16:48:30 +0800
-Subject: [PATCH 07/10] Android: inital porting of libefivar
+Subject: [PATCH 07/86] Android: inital porting of libefivar
 
 The static library is linked by efibootmgr.
 
@@ -78,5 +78,5 @@ index 00000000000..b3410e1f3e7
 +
 +include $(BUILD_STATIC_LIBRARY)
 -- 
-2.23.0
+2.24.1
 
