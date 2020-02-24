@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/efivar
@@ -48,6 +48,7 @@ make LIBDIR=%{_libdir} BINDIR=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="
 
 %install
 %makeinstall
+install -m 0644 src/abignore %{buildroot}%{_includedir}/efivar/.abignore
 
 %check
 %ifarch x86_64
@@ -74,6 +75,9 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Feb 24 2020 Peter Jones <pjones@redhat.com> - 37-7
+- Package our abignore file to try to shut taskotron up some.
+
 * Mon Feb 24 2020 Peter Jones <pjones@redhat.com> - 37-6
 - Pull in a bunch of patches from upstream.
 
