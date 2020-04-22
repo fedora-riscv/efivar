@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPLv2.1
 URL:            https://github.com/rhboot/efivar
@@ -15,6 +15,10 @@ Source0:        https://github.com/rhboot/efivar/releases/download/%{version}/ef
 Source1:        efivar.patches
 
 %include %{SOURCE1}
+
+# Source1 patches reflect a git snapshot, this is a separate fix on top
+# with a gap in between
+Patch100:       0001-Fix-sys-block-sysfs-parsing-for-eMMC-s.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -75,6 +79,10 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Wed Apr 22 2020 Hans de Goede <hdegoede@redhat.com> - 37-8
+- Add a patch to fix eMMC sysfs path parsing
+  Resolves: rhbz#1826864
+
 * Mon Feb 24 2020 Peter Jones <pjones@redhat.com> - 37-7
 - Package our abignore file to try to shut taskotron up some.
 
