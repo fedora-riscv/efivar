@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1
 URL:            https://github.com/rhboot/efivar
@@ -51,7 +51,7 @@ git config --unset user.name
 make LIBDIR=%{_libdir} BINDIR=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="$RPM_LD_FLAGS -flto"
 
 %install
-%makeinstall
+%make_install
 install -m 0644 src/abignore %{buildroot}%{_includedir}/efivar/.abignore
 
 %check
@@ -79,6 +79,10 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Jul 13 2020 Tom Stellard <tstellar@redhat.com>
+- Use make macros
+- https://fedoraproject.org/wiki/Changes/UseMakeBuildInstallMacro
+
 * Mon Jul 13 2020 Javier Martinez Canillas <javierm@redhat.com> - 37-9
 - Change License field to LGPL-2.1 to prevent rpminspect test to fail
 
