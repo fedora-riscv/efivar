@@ -1,8 +1,8 @@
 Name:           efivar
 Version:        37
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Tools to manage UEFI variables
-License:        LGPLv2.1
+License:        LGPL-2.1
 URL:            https://github.com/rhboot/efivar
 Requires:       %{name}-libs = %{version}-%{release}
 ExclusiveArch:  %{efi}
@@ -79,6 +79,9 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Jul 13 2020 Javier Martinez Canillas <javierm@redhat.com> - 37-9
+- Change License field to LGPL-2.1 to prevent rpminspect test to fail
+
 * Wed Apr 22 2020 Hans de Goede <hdegoede@redhat.com> - 37-8
 - Add a patch to fix eMMC sysfs path parsing
   Resolves: rhbz#1826864
