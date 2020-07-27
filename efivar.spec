@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1
 URL:            https://github.com/rhboot/efivar
@@ -48,6 +48,10 @@ git config --unset user.email
 git config --unset user.name
 
 %build
+# This package implements symbol versioning with toplevel ASM statments which is
+# incompatible with LTO.  Disable LTO
+%define _lto_cflags %{nil}
+
 make LIBDIR=%{_libdir} BINDIR=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="$RPM_LD_FLAGS -flto"
 
 %install
@@ -79,6 +83,9 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Jul 27 2020 Jeff Law <law@redhat.com> - 37-11
+- Disable LTO
+
 * Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org>
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
