@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1
 URL:            https://github.com/rhboot/efivar
@@ -79,6 +79,9 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org>
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
 * Mon Jul 13 2020 Javier Martinez Canillas <javierm@redhat.com> - 37-9
 - Change License field to LGPL-2.1 to prevent rpminspect test to fail
 
