@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        11%{?dist}
+Release:        12%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1
 URL:            https://github.com/rhboot/efivar
@@ -83,6 +83,10 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org>
+- Second attempt - Rebuilt for
+  https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
 * Mon Jul 27 2020 Jeff Law <law@redhat.com> - 37-11
 - Disable LTO
 
