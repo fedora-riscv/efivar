@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        12%{?dist}
+Release:        13%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1
 URL:            https://github.com/rhboot/efivar
@@ -52,7 +52,7 @@ git config --unset user.name
 # incompatible with LTO.  Disable LTO
 %define _lto_cflags %{nil}
 
-make LIBDIR=%{_libdir} BINDIR=%{_bindir} CFLAGS="$RPM_OPT_FLAGS -flto" LDFLAGS="$RPM_LD_FLAGS -flto"
+make LIBDIR=%{_libdir} BINDIR=%{_bindir} CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 
 %install
 %makeinstall
@@ -83,6 +83,9 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Thu Aug 06 2020 Jeff Law <law@redhat.com>
+- Remove explicit LTO bits from flags
+
 * Sat Aug 01 2020 Fedora Release Engineering <releng@fedoraproject.org>
 - Second attempt - Rebuilt for
   https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
