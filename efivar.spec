@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        13%{?dist}
+Release:        14%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1
 URL:            https://github.com/rhboot/efivar
@@ -48,10 +48,6 @@ git config --unset user.email
 git config --unset user.name
 
 %build
-# This package implements symbol versioning with toplevel ASM statments which is
-# incompatible with LTO.  Disable LTO
-%define _lto_cflags %{nil}
-
 make LIBDIR=%{_libdir} BINDIR=%{_bindir} CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 
 %install
@@ -83,6 +79,10 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Fri Sep 04 2020 Jeff Law <law@redhat.com> 37-14
+- Use symver attribute rather than asms for symbol versioning
+- Re-enable LTO
+
 * Thu Aug 06 2020 Jeff Law <law@redhat.com>
 - Remove explicit LTO bits from flags
 

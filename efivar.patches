@@ -76,3 +76,4 @@ Patch0075: 0075-Makefile-minor-typo-fix.patch
 Patch0076: 0076-util.h-minor-whitespace-cleanup.patch
 Patch0077: 0077-util.h-make-strdupa-and-strndupa-pass-NULL-straight-.patch
 Patch0078: 0078-Update-travis-to-use-a-newer-distro.patch
+Patch0079: 0001-Fix-symbol-versioning-to-use-symver-attribute-rather.patch
