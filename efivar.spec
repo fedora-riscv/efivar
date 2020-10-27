@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        13%{?dist}
+Release:        14%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1
 URL:            https://github.com/rhboot/efivar
@@ -19,6 +19,10 @@ Source1:        efivar.patches
 # Source1 patches reflect a git snapshot, this is a separate fix on top
 # with a gap in between
 Patch100:       0001-Fix-sys-block-sysfs-parsing-for-eMMC-s.patch
+# Fix XML ABI dumps that were generated with a faulty GCC and missed the
+# variadic arguments when building without LTO, bug #1863475,
+# <https://github.com/rhboot/efivar/issues/165>
+Patch101:       0001-Fix-abidw-output-for-missing-variadic-arguments.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -83,6 +87,10 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Tue Oct 27 2020 Petr Pisar <ppisar@redhat.com> - 37-14
+- Fix XML ABI dumps that were generated with a faulty GCC and missed the
+  variadic arguments when building without LTO (bug #1863475)
+
 * Thu Aug 06 2020 Jeff Law <law@redhat.com>
 - Remove explicit LTO bits from flags
 
