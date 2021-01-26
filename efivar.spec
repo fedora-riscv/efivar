@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1
 URL:            https://github.com/rhboot/efivar
@@ -88,6 +88,9 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org>
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Tue Oct 27 2020 Petr Pisar <ppisar@redhat.com> - 37-14
 - Fix XML ABI dumps that were generated with a faulty GCC and missed the
   variadic arguments when building without LTO (bug #1863475)
