@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        37
-Release:        15%{?dist}
+Release:        16%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1
 URL:            https://github.com/rhboot/efivar
@@ -88,6 +88,10 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Thu Jun 17 2021 Javier Martinez Canillas <javierm@redhat.com> - 37-16
+- Enable Intel Control-flow Enforcement Technology (CET)
+  Resolves: rhbz#1808811
+
 * Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org>
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
