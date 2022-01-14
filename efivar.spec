@@ -1,6 +1,6 @@
 Name:           efivar
-Version:        37
-Release:        17%{?dist}
+Version:        38
+Release:        1%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1-only
 URL:            https://github.com/rhboot/efivar
@@ -9,21 +9,16 @@ ExclusiveArch:  %{efi}
 
 BuildRequires:  gcc
 BuildRequires:  efi-srpm-macros git glibc-static libabigail
-BuildRequires: make
+BuildRequires:  make
+BuildRequires:  mandoc
+BuildRequires:  git
 # please don't fix this to reflect github's incomprehensible url that goes
 # to a different tarball.
 Source0:        https://github.com/rhboot/efivar/releases/download/%{version}/efivar-%{version}.tar.bz2
 Source1:        efivar.patches
 
+# include patches
 %include %{SOURCE1}
-
-# Source1 patches reflect a git snapshot, this is a separate fix on top
-# with a gap in between
-Patch100:       0001-Fix-sys-block-sysfs-parsing-for-eMMC-s.patch
-# Fix XML ABI dumps that were generated with a faulty GCC and missed the
-# variadic arguments when building without LTO, bug #1863475,
-# <https://github.com/rhboot/efivar/issues/165>
-Patch101:       0001-Fix-abidw-output-for-missing-variadic-arguments.patch
 
 %description
 efivar provides a simple command line interface to the UEFI variable facility.
@@ -75,6 +70,7 @@ make abicheck
 %license COPYING
 %doc README.md
 %{_bindir}/efivar
+%{_bindir}/efisecdb
 %exclude %{_bindir}/efivar-static
 %{_mandir}/man1/*
 
@@ -88,6 +84,9 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Fri Jan 14 2022 Robbie Harwood <rharwood@redhat.com> - 38-1
+- New upstream release (38)
+
 * Wed Jul 21 2021 Fedora Release Engineering <releng@fedoraproject.org>
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
