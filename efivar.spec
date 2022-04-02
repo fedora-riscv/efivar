@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        38
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1-only
 URL:            https://github.com/rhboot/efivar
@@ -16,6 +16,7 @@ BuildRequires:  git
 # to a different tarball.
 Source0:        https://github.com/rhboot/efivar/releases/download/%{version}/efivar-%{version}.tar.bz2
 Source1:        efivar.patches
+Source2:        0001-Fix-the-march-issue-for-riscv64.patch
 
 # include patches
 %include %{SOURCE1}
@@ -84,6 +85,9 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Sun Apr 03 2022 Wei Fu <wefu@redhat.com> - 38-3
+- Fix the -march issue for riscv64
+
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org>
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 

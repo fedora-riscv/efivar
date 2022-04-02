@@ -1,0 +1,1 @@
+%define patches %_sourcedir/0001-Fix-the-march-issue-for-riscv64.patch
