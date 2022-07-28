@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        38
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1-only
 URL:            https://github.com/rhboot/efivar
@@ -84,10 +84,13 @@ make abicheck
 %{_libdir}/*.so.*
 
 %changelog
+* Thu Jul 28 2022 Robbie Harwood <rharwood@redhat.com> - 38-5
+- Fix build with glibc-2.36
+
 * Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org>
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
 
-* Fri Apr 08 2022 Robbie Harwood <rharwood@redhat.com> 38-3
+* Fri Apr 08 2022 Robbie Harwood <rharwood@redhat.com> - 38-3
 - Apply fix for risxv64 (wefu)
 
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 38-2
