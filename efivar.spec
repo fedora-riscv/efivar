@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        39
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1-only
 URL:            https://github.com/rhboot/efivar
@@ -84,6 +84,9 @@ make abicheck CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="$RPM_LD_FLAGS"
 %{_libdir}/*.so.*
 
 %changelog
+* Thu Jul 11 2024 Peter Jones <pjones@redhat.com> - 39-3
+- Update our abixml files for newer libabigail
+
 * Thu Jul 11 2024 Nicolas Frayer <nfrayer@redhat.com> - 39-2
 - license: Add COPYING to efivar-lib
 - Resolves: #2295838
