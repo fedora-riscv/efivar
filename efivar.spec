@@ -1,6 +1,6 @@
 Name:           efivar
 Version:        39
-Release:        6%{?dist}
+Release:        6.rv64%{?dist}
 Summary:        Tools to manage UEFI variables
 License:        LGPL-2.1-only
 URL:            https://github.com/rhboot/efivar
